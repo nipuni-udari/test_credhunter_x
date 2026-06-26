@@ -1,0 +1,20 @@
+engine: llm
+fail_on: high
+
+scanner:
+  gitleaks_config: .gitleaks.toml
+
+llm:
+  enabled: true
+  workflow: single
+  classify: true
+  rank: true
+  explain: true
+  remediate: true
+
+filters:
+  ignore_paths:
+    - expected/**
+    - reports/**
+    - credhunter-report.*
+    - .git/**

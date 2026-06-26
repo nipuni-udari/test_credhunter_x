@@ -1,0 +1,23 @@
+file,line,name,expected_class,expected_action,notes
+src/critical_cases.py,6,GITHUB_TOKEN,true_positive,fail,synthetic critical GitHub-like token
+src/critical_cases.py,9,OPENAI_API_KEY,true_positive,fail,synthetic critical OpenAI-like key
+src/critical_cases.py,12,AWS_ACCESS_KEY_ID,true_positive,fail,synthetic critical/high AWS-like key
+secrets/dev_private_key.txt,1,CHX TEST PRIVATE KEY,true_positive,fail,synthetic private key marker
+src/high_cases.py,4,DATABASE_URL,true_positive,fail,synthetic database URL with embedded password
+src/high_cases.py,7,STRIPE_LIVE_KEY,true_positive,fail,synthetic Stripe-like secret
+deployment/k8s-secret.yaml,8,payments_token,true_positive,fail_or_warn,synthetic deployment secret
+src/medium_warn_cases.py,4,SERVICE_API_KEY,true_positive,warn,synthetic medium service token
+src/medium_warn_cases.py,7,WEBHOOK_SIGNING_SECRET,true_positive,warn,synthetic medium webhook secret
+src/low_cases.py,4,LOCAL_DEV_TOKEN,low_or_false_positive,pass_or_ignore,local dev token
+src/low_cases.py,7,TEST_FIXTURE_SECRET,low_or_false_positive,pass_or_ignore,test fixture token
+src/placeholders.py,4,STRIPE_API_KEY,false_positive,ignore,placeholder
+src/placeholders.py,7,SENDGRID_API_KEY,false_positive,ignore,masked placeholder
+src/placeholders.py,10,SLACK_TOKEN,false_positive,ignore,replace-me placeholder
+src/placeholders.py,13,PASSWORD,false_positive,ignore,dummy value
+src/placeholders.py,16,TEST_PASSWORD,false_positive,ignore,test value
+src/placeholders.py,19,EXAMPLE_SECRET,false_positive,ignore,example value
+src/placeholders.py,22,PRIVATE_KEY,false_positive,ignore,angle placeholder
+src/env_safe.py,7,GITHUB_TOKEN,false_positive,ignore,env var reference
+src/env_safe.py,8,OPENAI_API_KEY,false_positive,ignore,env var reference
+src/env_safe.py,9,DATABASE_URL,false_positive,ignore,env var reference
+src/env_safe.py,10,SERVICE_API_KEY,false_positive,ignore,env var reference

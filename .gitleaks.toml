@@ -1,0 +1,94 @@
+title = "CredHunter-X Push-Safe Synthetic Rules"
+
+[allowlist]
+description = "Ignore generated outputs and expected labels"
+paths = [
+  '''^expected/''',
+  '''^reports/''',
+  '''^credhunter-report\.(json|sarif|html|md)$''',
+  '''^\.git/'''
+]
+
+[[rules]]
+id = "github_token"
+description = "Synthetic GitHub-like token for CredHunter-X testing"
+regex = '''CHX_GITHUB_PAT_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_GITHUB_PAT"]
+
+[[rules]]
+id = "openai_api_key"
+description = "Synthetic OpenAI-like API key for CredHunter-X testing"
+regex = '''CHX_OPENAI_PROJECT_KEY_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_OPENAI"]
+
+[[rules]]
+id = "aws_access_key_id"
+description = "Synthetic AWS-like access key ID for CredHunter-X testing"
+regex = '''CHX_AWS_ACCESS_KEY_ID_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_AWS_ACCESS_KEY_ID"]
+
+[[rules]]
+id = "private_key"
+description = "Synthetic private key marker for CredHunter-X testing"
+regex = '''-----BEGIN CHX TEST PRIVATE KEY-----'''
+secretGroup = 0
+keywords = ["CHX TEST PRIVATE KEY"]
+
+[[rules]]
+id = "database_url"
+description = "Synthetic database URL with embedded credentials"
+regex = '''chx-postgres://[A-Za-z0-9_]+:CHX_DB_PASS_[A-Za-z0-9]+@[A-Za-z0-9_.-]+:[0-9]+/[A-Za-z0-9_]+'''
+secretGroup = 0
+keywords = ["chx-postgres"]
+
+[[rules]]
+id = "stripe_api_key"
+description = "Synthetic Stripe-like live secret for CredHunter-X testing"
+regex = '''CHX_STRIPE_LIVE_SECRET_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_STRIPE_LIVE_SECRET"]
+
+[[rules]]
+id = "k8s_payment_token"
+description = "Synthetic Kubernetes payment token"
+regex = '''CHX_K8S_PAYMENT_TOKEN_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_K8S_PAYMENT_TOKEN"]
+
+[[rules]]
+id = "generic_secret"
+description = "Synthetic medium service API key"
+regex = '''CHX_SERVICE_API_KEY_MEDIUM_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_SERVICE_API_KEY_MEDIUM"]
+
+[[rules]]
+id = "webhook_secret"
+description = "Synthetic medium webhook signing secret"
+regex = '''CHX_WEBHOOK_SECRET_MEDIUM_[A-Z0-9_]{20,}'''
+secretGroup = 0
+keywords = ["CHX_WEBHOOK_SECRET_MEDIUM"]
+
+[[rules]]
+id = "local_dev_secret"
+description = "Synthetic low-risk local development token"
+regex = '''CHX_LOCAL_DEV_TOKEN_LOW_[A-Za-z0-9_]+'''
+secretGroup = 0
+keywords = ["CHX_LOCAL_DEV_TOKEN_LOW"]
+
+[[rules]]
+id = "test_fixture_secret"
+description = "Synthetic low-risk test fixture secret"
+regex = '''CHX_TEST_FIXTURE_SECRET_LOW_[A-Za-z0-9_]+'''
+secretGroup = 0
+keywords = ["CHX_TEST_FIXTURE_SECRET_LOW"]
+
+[[rules]]
+id = "placeholder_value"
+description = "Synthetic placeholders that should be ignored by CredHunter-X"
+regex = '''(YOUR_API_KEY_HERE|YOUR\*\*\*\*HERE|REPLACE_ME|dummy_password|test123|example_secret_value|<YOUR_PRIVATE_KEY>)'''
+secretGroup = 0
+keywords = ["YOUR_API_KEY_HERE", "REPLACE_ME", "dummy_password"]
